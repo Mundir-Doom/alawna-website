@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتحاد قبائل العلاونة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <img src="assets/5bb495a6c0913a1fd0082c21b631846738790a28.png" alt="شعار اتحاد قبائل العلاونة" class="logo-img">
+                    <div class="logo-text">اتحاد قبائل العلاونة</div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
+                    <button class="nav-link active" data-section="home">الرئيسية</button>
+                    <button class="nav-link" data-section="about">التعريف</button>
+                    <button class="nav-link" data-section="present">الحاضر والمستقبل</button>
+                    <button class="nav-link" data-section="spread">الانتشار والمناطق</button>
+                    <button class="nav-link" data-section="figures">الرموز والمجاهدون</button>
+                    <button class="nav-link" data-section="resources">المراجع</button>
+                    <button class="nav-link" data-section="blog">الأخبار</button>
+                    <button class="nav-link" data-section="contact">تواصل</button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="nav-mobile" id="mobile-nav">
+                <button class="nav-link-mobile active" data-section="home">الرئيسية</button>
+                <button class="nav-link-mobile" data-section="about">التعريف</button>
+                <button class="nav-link-mobile" data-section="present">الحاضر والمستقبل</button>
+                <button class="nav-link-mobile" data-section="spread">الانتشار والمناطق</button>
+                <button class="nav-link-mobile" data-section="figures">الرموز والمجاهدون</button>
+                <button class="nav-link-mobile" data-section="resources">المراجع</button>
+                <button class="nav-link-mobile" data-section="blog">الأخبار</button>
+                <button class="nav-link-mobile" data-section="contact">تواصل</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <!-- Background Carousel -->
+            <div class="hero-carousel">
+                <div class="carousel-slide active">
+                    <img src="assets/15dbdea78f1a387b40a052a05482561164a74998.png" alt="المحاربون التاريخيون" class="carousel-img">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/89403807d08d0e29922c3acde4e0ed7549d067b4.png" alt="فرسان الصحراء" class="carousel-img">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/26885bccde81de2081318548df1662088a02c5cb.png" alt="الفرسان المعاصرون" class="carousel-img">
+                </div>
+                
+                <!-- Overlays -->
+                <div class="hero-overlay"></div>
+                <div class="hero-gradient"></div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control carousel-prev" id="prev-btn">
+                <svg class="carousel-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button class="carousel-control carousel-next" id="next-btn">
+                <svg class="carousel-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+
+            <!-- Slide Indicators -->
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0"></button>
+                <button class="indicator" data-slide="1"></button>
+                <button class="indicator" data-slide="2"></button>
+            </div>
+
+            <!-- Image Caption -->
+            <div class="carousel-caption">
+                <p id="carousel-caption-text">تراث عريق من الشجاعة والفروسية</p>
+            </div>
+
+            <!-- Main Hero Content -->
+            <div class="hero-content">
+                <div class="hero-text">
+                    <!-- Badge -->
+                    <div class="hero-badge">#اتحاد_قبائل_العلاونة</div>
+
+                    <!-- Main Title -->
+                    <h1 class="hero-title">اتحاد قبائل العلاونة</h1>
+
+                    <!-- Subtitle -->
+                    <p class="hero-subtitle">هویةٌ راسخة، حاضرٌ یزدهر، ومستقبلٌ رقميٌ واعد</p>
+
+                    <!-- CTA Button -->
+                    <button class="hero-cta" onclick="scrollToSection('contact')">انضم إلینا</button>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-text">انتقل للأسفل</div>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- Home Section -->
+        <section class="home-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-kicker">من نحن</div>
+                    <h2 class="section-title">قبيلة العلاونة</h2>
+                    <p class="section-desc">تنسب إلى علي المُلقّب بـ(علوان) بن سالم بن هيب بن رافع بن دباب من بني سليم، ويرى كثيرون أن العلاونة من أشراف العرب من آل البيت عليهم السلام من سلالة الحسن بن علي بن أبي طالب رضي الله عنهما.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="content-card card--featured">
+                        <div class="card-tag card-tag--primary">الرسالة</div>
+                        <h3 class="card-title">رسالتنا</h3>
+                        <p class="card-body">نُعرّف بالهوية الجامعة لقبيلة العلاونة، ونُركِّز على الحاضر والمستقبل عبر التحول الرقمي، واستثمار الإنسان والأرض والمعرفة.</p>
+                    </div>
+                    
+                    <div class="content-card">
+                        <div class="card-tag">الرؤية</div>
+                        <h3 class="card-title">رؤيتنا</h3>
+                        <p class="card-body">بناء منصة رقمية متطورة تجمع أبناء القبيلة حول هوية واحدة، وتُسهم في تطوير المجتمع من خلال العلم والتكنولوجيا والقيم الأصيلة.</p>
+                    </div>
+                </div>
+
+                <div class="quote">
+                    <div class="quote-decoration">
+                        <div class="quote-mark quote-mark-left">"</div>
+                        <div class="quote-mark quote-mark-right">"</div>
+                    </div>
+                    <p class="quote-text">رحم الله أسلافنا، وفتح طريق أبناءنا</p>
+                    <div class="quote-underline"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">التعريف والنسب</h2>
+                    <p class="section-desc">العلاونة من القبائل الكبيرة في الوطن العربي، تنتشر في ليبيا والعراق وسوريا واليمن والسعودية والأردن والسودان</p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="content-card">
+                        <div class="card-tag">النسب</div>
+                        <h3 class="card-title">النسب والأصل</h3>
+                        <p class="card-body">تنسب إلى علي المُلقّب بـ(علوان) بن سالم بن هيب بن رافع بن دباب من بني سليم، ويرى كثيرون أن العلاونة من أشراف العرب من آل البيت عليهم السلام من سلالة الحسن بن علي بن أبي طالب رضي الله عنهما.</p>
+                    </div>
+                    
+                    <div class="content-card">
+                        <div class="card-tag">ليبيا</div>
+                        <h3 class="card-title">في ليبيا</h3>
+                        <p class="card-body">قبيلة العلاونة في ليبيا من شرفاء أولاد سيدي السائح، وتُعد من أكبر القبائل، جلّهم في المنطقة الغربية، وتمركزهم في سيدي السائح والنواحي الأربعة.</p>
+                    </div>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="photo-gallery">
+                    <h3 class="gallery-title">صور من تراثنا ومجتمعنا</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images/7f19e155-191e-4c30-af72-9058702c0c8a.JPG" alt="من تراث وتاريخ قبيلة العلاونة" class="gallery-img">
+                            <div class="gallery-caption">تراث عريق ومجتمع أصيل</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/d2e52653-2bc5-41f0-820c-f01e73057cbe.JPG" alt="أبناء قبيلة العلاونة" class="gallery-img">
+                            <div class="gallery-caption">أبناء القبيلة الكرام</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/e1b0d96c-74c9-4ab4-b80b-1fcecd8f25a3 2.JPG" alt="تجمعات وفعاليات قبيلة العلاونة" class="gallery-img">
+                            <div class="gallery-caption">التواصل والتجمعات المجتمعية</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="regions-card">
+                    <h3 class="regions-title">مناطق التواجد في ليبيا</h3>
+                    <div class="regions-grid">
+                        <div class="region-item">سيدي السائح (التمركز)</div>
+                        <div class="region-item">سوق الجمعة</div>
+                        <div class="region-item">عين زارة</div>
+                        <div class="region-item">زناتة</div>
+                        <div class="region-item">وادي الربيع</div>
+                        <div class="region-item">وادي المجينين</div>
+                        <div class="region-item">ثلث ترهونة</div>
+                        <div class="region-item">هون (90% من السكان علاونة)</div>
+                        <div class="region-item">البيضاء</div>
+                        <div class="region-item">بنغازي</div>
+                        <div class="region-item">منطقة الجهاد</div>
+                        <div class="region-item">الحنية (الجبل الأخضر)</div>
+                        <div class="region-item">مراوة</div>
+                        <div class="region-item">سبها</div>
+                        <div class="region-item">مرزق</div>
+                        <div class="region-item">تراغن</div>
+                        <div class="region-item">زويلة</div>
+                        <div class="region-item">وادي الشاطئ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Present Section -->
+        <section id="present" class="present-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">الحاضر والمستقبل</h2>
+                    <p class="section-desc">لا نريد فتح جراح الماضي؛ اليوم نركّز على الحاضر الذي نعمل على تحسينه، وعلى مستقبل القبيلة عبر التحول الرقمي</p>
+                </div>
+
+                <div class="present-vision">
+                    <div class="icon-badge" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M5 9h14M9 21V9m6 12v-6" />
+                        </svg>
+                    </div>
+                    <h3 class="section-subtitle">رؤيتنا للمستقبل</h3>
+                    <p class="vision-text">التحول الرقمي، والريادة في التكنولوجيا والإدارة الحديثة، والتنافس على العلم والأدب والحداثة</p>
+                </div>
+
+                <div class="priorities-section">
+                    <div class="section-header">
+                        <h3 class="section-subtitle">أولوياتنا الحالية</h3>
+                    </div>
+                    <div class="priorities-grid">
+                        <div class="priority-item">
+                            <div class="priority-icon">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="priority-content">
+                                <h4 class="priority-title">تعزيز الهوية الجامعة</h4>
+                                <p class="priority-detail">احترام الملكية التاريخية للاسم.</p>
+                            </div>
+                        </div>
+                        <div class="priority-item">
+                            <div class="priority-icon">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="priority-content">
+                                <h4 class="priority-title">توثيق الأنساب والوثائق</h4>
+                                <p class="priority-detail">رقمياً لحماية الإرث الثقافي.</p>
+                            </div>
+                        </div>
+                        <div class="priority-item">
+                            <div class="priority-icon">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <div class="priority-content">
+                                <h4 class="priority-title">تمكين الشباب والنساء</h4>
+                                <p class="priority-detail">من التعليم وريادة الأعمال.</p>
+                            </div>
+                        </div>
+                        <div class="priority-item">
+                            <div class="priority-icon">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                </svg>
+                            </div>
+                            <div class="priority-content">
+                                <h4 class="priority-title">استثمار الموارد</h4>
+                                <p class="priority-detail">كل درهم، وكل قطرة ماء، وكل شتلة، وكل حبّة رمل.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="present-initiatives">
+                    <h3 class="section-subtitle">مبادراتنا الرقمية</h3>
+                    <div class="cards-grid initiatives-grid">
+                        <div class="content-card">
+                            <div class="card-tag">تقنية</div>
+                            <h3 class="card-title">التحول الرقمي</h3>
+                            <p class="card-body">بناء قواعد بيانات، وأرشفة سحابية، ومراكز معرفة.</p>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-tag">تواصل</div>
+                            <h3 class="card-title">المنصات المجتمعية</h3>
+                            <p class="card-body">شبكات تواصل وخدمات تعريفية للقبيلة.</p>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-tag">جغرافيا</div>
+                            <h3 class="card-title">خارطة الانتشار</h3>
+                            <p class="card-body">خرائط تفاعلية تُظهر التوزيع والتواجد.</p>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-tag">تعليم</div>
+                            <h3 class="card-title">برنامج المنح</h3>
+                            <p class="card-body">دعم التعليم والبحث والابتكار لأبناء القبيلة.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="present-cta">
+                    <h3 class="section-subtitle">شارك في بناء المستقبل</h3>
+                    <p class="present-cta-text">لديك فكرة أو مبادرة تخدم حاضر القبيلة ومستقبلها؟ نحن نرحب بمساهماتك</p>
+                    <button type="button" class="primary-button" onclick="scrollToSection('contact')">
+                        شارك بفكرتك
+                        <svg class="button-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l7-7-7-7M5 12h14" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spread Section -->
+        <section id="spread" class="spread-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">الانتشار والمناطق</h2>
+                    <p class="section-desc">العلاونة منتشرون في جميع أنحاء الوطن العربي، مع تركز كبير في ليبيا وحضور مؤثر في بقية الدول العربية</p>
+                </div>
+
+                <div class="spread-overview">
+                    <div class="icon-badge" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2 12h20M12 2c2 5 2 15 0 20M5 5c4 2 10 2 14 0M5 19c4-2 10-2 14 0" />
+                        </svg>
+                    </div>
+                    <h3 class="section-subtitle">الانتشار الجغرافي</h3>
+                    <div class="badge-list">
+                        <span class="badge">ليبيا</span>
+                        <span class="badge">العراق</span>
+                        <span class="badge">سوريا</span>
+                        <span class="badge">اليمن</span>
+                        <span class="badge">السعودية</span>
+                        <span class="badge">الأردن</span>
+                        <span class="badge">السودان</span>
+                    </div>
+                    <p class="overview-meta"><span>7</span> دول عربية</p>
+                </div>
+
+                <div class="libya-section">
+                    <h3 class="section-subtitle">التركز الرئيسي في ليبيا</h3>
+                    <div class="libya-content">
+                        <div class="libya-description">
+                            <p>تبدأ أرضهم من السائح وسوق الجمعة وعين زارة وزناتة ووادي الربيع ووادي المجينين حتى ثلث ترهونة، مع وجود بارز في هون والبيضاء وبنغازي والجبل الأخضر ومراوة وسبها ومرزق وتراغن وزويلة ووادي الشاطئ.</p>
+                        </div>
+
+                        <div class="libya-gallery">
+                            <div class="main-image">
+                                <img src="assets/89403807d08d0e29922c3acde4e0ed7549d067b4.png" alt="التراث المعماري الليبي" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.minHeight='200px'; this.parentElement.style.background='var(--color-neutral-100)'">
+                                <div class="image-caption">التراث المعماري الليبي</div>
+                            </div>
+                            <div class="side-images">
+                                <div class="side-image">
+                                    <img src="assets/15dbdea78f1a387b40a052a05482561164a74998.png" alt="المحاربون التاريخيون" loading="lazy">
+                                    <div class="image-caption">التراث العسكري</div>
+                                </div>
+                                <div class="side-image">
+                                    <img src="assets/89403807d08d0e29922c3acde4e0ed7549d067b4.png" alt="فرسان الصحراء" loading="lazy">
+                                    <div class="image-caption">فرسان الصحراء</div>
+                                </div>
+                                <div class="side-image">
+                                    <img src="assets/26885bccde81de2081318548df1662088a02c5cb.png" alt="الفرسان المعاصرون" loading="lazy">
+                                    <div class="image-caption">التراث الحديث</div>
+                                </div>
+                                <div class="side-image">
+                                    <img src="assets/5bb495a6c0913a1fd0082c21b631846738790a28.png" alt="شعار القبيلة" loading="lazy">
+                                    <div class="image-caption">رموز القبيلة</div>
+                                </div>
+                                <div class="side-image">
+                                    <img src="assets/15dbdea78f1a387b40a052a05482561164a74998.png" alt="التراث الليبي" loading="lazy">
+                                    <div class="image-caption">التراث الليبي</div>
+                                </div>
+                                <div class="side-image">
+                                    <img src="assets/26885bccde81de2081318548df1662088a02c5cb.png" alt="الذاكرة التاريخية" loading="lazy">
+                                    <div class="image-caption">الذاكرة التاريخية</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="libya-info-grid">
+                            <div class="info-item">
+                                <h4 class="info-title">أماكن تحمل الاسم</h4>
+                                <ul class="info-list">
+                                    <li>منطقة في طرابلس باسم عائلة بن عاشور</li>
+                                    <li>شارع في طرابلس باسم مسعود الشويخ</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-item info-item--highlight">
+                                <h4 class="info-title">معلومة مهمة</h4>
+                                <p>في مدينة هون، يشكل أبناء قبيلة العلاونة حوالي 90% من السكان، مما يجعلها من أكبر التجمعات القبلية في المنطقة.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spread-map">
+                    <h3 class="section-subtitle">خريطة تفاعلية قريباً</h3>
+                    <p>نعمل على تطوير خريطة تفاعلية تُظهر توزيع أبناء القبيلة في جميع أنحاء الوطن العربي</p>
+                    <div class="map-placeholder">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l7.5 2.5L3 8m18-5l-7.5 2.5L21 8M3 16l7.5-2.5L3 11m18 5l-7.5-2.5L21 11M10.5 5.5l3 1M10.5 12.5l3 1M10.5 19.5l3 1" />
+                        </svg>
+                        <span>الخريطة التفاعلية تحت التطوير</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Figures Section -->
+        <section id="figures" class="figures-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">الرموز والمجاهدون</h2>
+                    <p class="section-desc">تاريخ حافل بالتضحيات والبطولات في سبيل الوطن والحرية، رجال خلدهم التاريخ بمواقفهم البطولية</p>
+                </div>
+
+                <div class="martyrs-section">
+                    <h3 class="section-subtitle">الشهداء الأبرار</h3>
+                    <div class="martyrs-grid">
+                        <div class="martyr-item">
+                            <h4 class="martyr-name">أبو بكر العلواني</h4>
+                            <p class="martyr-description">الذراع الأيمن لعمر المختار، واستشهد ليلة خونة مراوة أمام بئر قندوله.</p>
+                        </div>
+                        <div class="martyr-item">
+                            <h4 class="martyr-name">ازعيق العلواني</h4>
+                            <p class="martyr-description">كان قلم شيخ الشهداء عمر المختار، ورافقه في توثيق مسيرة الجهاد.</p>
+                        </div>
+                        <div class="martyr-item">
+                            <h4 class="martyr-name">مسعود الشويخ العلواني</h4>
+                            <p class="martyr-description">من أبطال معركة أبو عرقوب الثانية، ارتقى شهيداً دفاعاً عن الوطن.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="figures-grid">
+                    <div class="figures-card">
+                        <div class="card-heading">
+                            <div class="icon-badge" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 17.75l-6.172 3.245 1.18-6.88-5-4.868 6.9-1 3.092-6.257 3.092 6.257 6.9 1-5 4.868 1.18 6.88z" />
+                                </svg>
+                            </div>
+                            <h4 class="card-heading-title">مجاهدو معركة السائح</h4>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>مختار بن رحال</li>
+                            <li>صالح محمد السائح</li>
+                            <li>امحمد الكيلاني</li>
+                            <li>خليفة العجيمي</li>
+                            <li>صالح مختار جلال</li>
+                            <li>علي المبروك أوحيدة</li>
+                            <li>أبوعجيلة علي التايب</li>
+                        </ul>
+                    </div>
+                    <div class="figures-card">
+                        <div class="card-heading">
+                            <div class="icon-badge icon-badge--secondary" aria-hidden="true">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M23 21v-2a4 4 0 00-3-3.87" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 3.13a4 4 0 010 7.75" />
+                                </svg>
+                            </div>
+                            <h4 class="card-heading-title">مجاهدون آخرون</h4>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>علي أحمد عون</li>
+                            <li>مختار علي زايد</li>
+                            <li>مسعود علي زايد</li>
+                            <li>محمود بن رحال</li>
+                            <li>مصباح امحمد أوحيدة</li>
+                            <li>مسعود مبروك أوحيدة</li>
+                            <li>محمد عبد الله بكار</li>
+                        </ul>
+                        <p class="figures-note">وآخرون كثر رحمهم الله جميعاً</p>
+                    </div>
+                </div>
+
+                <div class="figures-memorial">
+                    <h3>تضحية لا تُنسى</h3>
+                    <p>استشهد نحو 100 رجل من بيت الصايم في الجبل الأخضر عندما تم ضرب نجعهم بطائرات الاستعمار الإيطالي</p>
+                    <span class="badge badge-outline">رحمهم الله جميعاً</span>
+                </div>
+
+                <div class="figures-legacy">
+                    <h3 class="section-subtitle">إرث خالد</h3>
+                    <p>هؤلاء الرجال الأبرار ضحوا بأرواحهم من أجل الحرية والكرامة، وتركوا لنا إرثاً عظيماً من القيم والمبادئ النبيلة. نحن اليوم نكمل مسيرتهم بالعلم والعمل والبناء.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="resources-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">المراجع والمصادر</h2>
+                    <p class="section-desc">مصادر موثقة ومراجع أكاديمية تدعم المعلومات المقدمة حول تاريخ وجغرافية قبيلة العلاونة</p>
+                </div>
+
+                <div class="resources-main">
+                    <div class="icon-badge" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 4h14v17H6a2 2 0 01-2-2V6a2 2 0 012-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="section-subtitle">المصدر الرئيسي</h3>
+                    <span class="badge">مرجع موثق</span>
+                    <h4 class="resource-title">معجم القبائل الليبية</h4>
+                    <p class="resource-text">المصدر المدوّن للمعلومات التاريخية والجغرافية المذكورة في هذا الموقع، ويُعتبر من المراجع الأساسية لدراسة القبائل الليبية وأنسابها.</p>
+                </div>
+
+                <div class="resources-grid">
+                    <div class="content-card">
+                        <div class="card-tag">قريباً</div>
+                        <h3 class="card-title">الأرشيف الشفوي</h3>
+                        <p class="card-body">نسعى لجمع وتوثيق الحكايات والذكريات الشفوية من كبار السن لحفظ التراث الثقافي للقبيلة.</p>
+                    </div>
+                    <div class="content-card">
+                        <div class="card-tag">تحت التطوير</div>
+                        <h3 class="card-title">الوثائق التاريخية</h3>
+                        <p class="card-body">مشروع رقمنة الوثائق والمخطوطات التاريخية المتعلقة بتاريخ القبيلة وأنسابها.</p>
+                    </div>
+                </div>
+
+                <div class="resources-disclaimer">
+                    <div class="card-heading">
+                        <div class="icon-badge icon-badge--warning" aria-hidden="true">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.29 3.86l-7.4 12.86A2 2 0 004.53 20h14.94a2 2 0 001.74-3.28l-7.4-12.86a2 2 0 00-3.52 0z" />
+                            </svg>
+                        </div>
+                        <h4 class="card-heading-title">إخلاء مسؤولية</h4>
+                    </div>
+                    <p>يُقَدَّم هذا المحتوى للتعريف الثقافي والتاريخي، ويُنصح بالرجوع إلى الوثائق الأصلية والمصادر الأكاديمية المتخصصة للتحقق من المعلومات. نحن نرحب بأي تصحيحات أو إضافات من أهل الاختصاص.</p>
+                </div>
+
+                <div class="resources-contribution">
+                    <h3 class="section-subtitle">ساهم في إثراء المحتوى</h3>
+                    <p>لديك وثائق أو مراجع تاريخية تود مشاركتها؟ أو معلومات موثقة تساعد في إكمال هذا العمل؟</p>
+                    <span class="badge">نرحب بمساهماتكم</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog/News Section -->
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">الأخبار والمقالات</h2>
+                    <p class="section-desc">آخر الأخبار والمقالات المتعلقة بقبيلة العلاونة وتراثها العريق</p>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-post blog-post--featured blog-post--with-thumbnail">
+                        <div class="post-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=300&q=80" alt="مؤتمر قبيلة العلاونة" loading="lazy">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-tag">مميز</div>
+                            <h3 class="post-title">مؤتمر قبيلة العلاونة السنوي 2025</h3>
+                            <p class="post-excerpt">يعقد الاتحاد مؤتمره السنوي لعام 2025 لمناقشة التطورات الجديدة ومشاريع التحول الرقمي المقبلة للقبيلة.</p>
+                            <div class="post-meta">
+                                <span class="post-date">15 يناير 2025</span>
+                                <span class="post-author">إدارة الاتحاد</span>
+                            </div>
+                            <a href="#" class="post-link">اقرأ المزيد</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post blog-post--with-thumbnail">
+                        <div class="post-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=300&q=80" alt="توثيق التراث" loading="lazy">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-tag">تراث</div>
+                            <h3 class="post-title">توثيق الحكايات الشفوية</h3>
+                            <p class="post-excerpt">مشروع جديد لجمع وتوثيق الحكايات والذكريات الشفوية من كبار السن لحفظ التراث الثقافي.</p>
+                            <div class="post-meta">
+                                <span class="post-date">10 يناير 2025</span>
+                                <span class="post-author">فريق التوثيق</span>
+                            </div>
+                            <a href="#" class="post-link">اقرأ المزيد</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post blog-post--with-thumbnail">
+                        <div class="post-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=300&q=80" alt="الخريطة التفاعلية" loading="lazy">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-tag">تكنولوجيا</div>
+                            <h3 class="post-title">إطلاق الخريطة التفاعلية</h3>
+                            <p class="post-excerpt">قريباً سنطلق الخريطة التفاعلية التي تُظهر توزيع أبناء القبيلة في جميع أنحاء الوطن العربي.</p>
+                            <div class="post-meta">
+                                <span class="post-date">5 يناير 2025</span>
+                                <span class="post-author">فريق التطوير</span>
+                            </div>
+                            <a href="#" class="post-link">اقرأ المزيد</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="post-tag">مجتمع</div>
+                        <h3 class="post-title">ملتقى الشباب العلواني</h3>
+                        <p class="post-excerpt">دعوة لجميع شباب القبيلة للمشاركة في الملتقى السنوي الذي يهدف إلى تعزيز التواصل وتبادل الأفكار.</p>
+                        <div class="post-meta">
+                            <span class="post-date">2 يناير 2025</span>
+                            <span class="post-author">لجنة الشباب</span>
+                        </div>
+                        <a href="#" class="post-link">اقرأ المزيد</a>
+                    </article>
+
+                    <article class="blog-post blog-post--with-thumbnail">
+                        <div class="post-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=300&q=80" alt="برنامج المنح الدراسية" loading="lazy">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-tag">تعليم</div>
+                            <h3 class="post-title">برنامج المنح الدراسية</h3>
+                            <p class="post-excerpt">الإعلان عن فتح باب التقديم لبرنامج المنح الدراسية لأبناء القبيلة المتفوقين أكاديمياً.</p>
+                            <div class="post-meta">
+                                <span class="post-date">28 ديسمبر 2024</span>
+                                <span class="post-author">لجنة التعليم</span>
+                            </div>
+                            <a href="#" class="post-link">اقرأ المزيد</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post">
+                        <div class="post-tag">إعلان</div>
+                        <h3 class="post-title">تحديث سجل الأنساب</h3>
+                        <p class="post-excerpt">دعوة لجميع أفراد القبيلة لتحديث بياناتهم في السجل الرقمي للأنساب وإرسال الوثائق المطلوبة.</p>
+                        <div class="post-meta">
+                            <span class="post-date">25 ديسمبر 2024</span>
+                            <span class="post-author">لجنة الأنساب</span>
+                        </div>
+                        <a href="#" class="post-link">اقرأ المزيد</a>
+                    </article>
+                </div>
+
+                <div class="blog-cta">
+                    <h3 class="section-subtitle">المزيد من الأخبار</h3>
+                    <p>ابق على اطلاع بآخر أخبار ومستجدات قبيلة العلاونة</p>
+                    <button class="primary-button">عرض جميع الأخبار</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">التواصل والمشاركة</h2>
+                    <p class="section-desc">نرحب بجميع أبناء القبيلة وأصدقائها للمشاركة في بناء هذه المنصة الرقمية</p>
+                </div>
+
+                <!-- CTA Blocks -->
+                <div class="cta-grid">
+                    <div class="cta-block">
+                        <div class="cta-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="cta-title">شارك مبادرة</h3>
+                        <p class="cta-desc">قدّم فكرة أو مشروعاً يخدم حاضر القبيلة ومستقبلها.</p>
+                        <button class="cta-btn">ابدأ الآن</button>
+                    </div>
+
+                    <div class="cta-block">
+                        <div class="cta-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="cta-title">ساهم بوثيقة</h3>
+                        <p class="cta-desc">أرسل وثائق أو صوراً لأرشفتها رقمياً.</p>
+                        <button class="cta-btn">ابدأ الآن</button>
+                    </div>
+
+                    <div class="cta-block">
+                        <div class="cta-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="cta-title">انضم للفريق</h3>
+                        <p class="cta-desc">مصمّم، مطوّر، كاتب محتوى؟ مكانك معنا.</p>
+                        <button class="cta-btn">ابدأ الآن</button>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="social-block">
+                    <div class="social-header">
+                        <svg class="hash-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                        </svg>
+                        <h3 class="social-title">تابعنا على وسائل التواصل</h3>
+                    </div>
+                    <p class="social-desc">انضم إلى مجتمعنا الرقمي وشارك في الحوار</p>
+                    <div class="social-badges">
+                        <span class="social-badge primary">#قبيلة_العلاونة</span>
+                        <span class="social-badge outline">@alawna</span>
+                    </div>
+                </div>
+
+                <!-- Guidelines -->
+                <div class="guidelines-block">
+                    <h3 class="guidelines-title">مبادئ التواصل</h3>
+                    <div class="guidelines-grid">
+                        <div class="guideline-item">
+                            <h4 class="guideline-heading">الخطاب الجامع</h4>
+                            <p class="guideline-text">المنصة تلتزم بخطاب جامع ومحترم، وتُرحِّب بجميع أبناء القبيلة وأصدقائها، وتمنع خطاب الكراهية أو التحريض.</p>
+                        </div>
+                        <div class="guideline-item">
+                            <h4 class="guideline-heading">احترام الملكية التاريخية</h4>
+                            <p class="guideline-text">يرجى احترام الملكية التاريخية للاسم (العلواني) والتواصل مع مشايخ القبيلة عند الحاجة لاستخدام رسمي.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Placeholder -->
+                <div class="contact-form-placeholder">
+                    <div class="form-placeholder-content">
+                        <svg class="mail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <h3 class="form-placeholder-title">نموذج التواصل</h3>
+                        <p class="form-placeholder-desc">سيتم إضافة نموذج تواصل تفاعلي قريباً لتسهيل التواصل والمشاركة</p>
+                        <span class="coming-soon-badge">قريباً</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="assets/logo.svg" alt="شعار اتحاد قبائل العلاونة" class="footer-logo-img">
+                    </div>
+                    <p class="footer-slogan">رحم الله أسلافنا، وفتح طريق أبناءنا</p>
+                    <div class="footer-hashtag">#اتحاد_قبائل_العلاونة</div>
+                </div>
+
+                <!-- Links Section -->
+                <div class="footer-links">
+                    <h4 class="footer-heading">روابط مهمة</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="/privacy" class="footer-link">سياسة الخصوصية</a></li>
+                        <li><a href="/terms" class="footer-link">شروط الاستخدام</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="footer-contact">
+                    <h4 class="footer-heading">التواصل</h4>
+                    <div class="footer-contact-info">
+                        <p>للتواصل والمشاركة</p>
+                        <p>نرحب بمساهماتكم وأفكاركم</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-separator"></div>
+
+            <div class="footer-bottom">
+                <p>© اتحاد قبائل العلاونة 2025</p>
+                <p>تم التطوير بعناية لخدمة تراث القبيلة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>
