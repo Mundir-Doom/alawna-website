@@ -1139,6 +1139,22 @@ body {
   z-index: 1;
 }
 
+.history-section {
+  padding: var(--space-20) 0;
+  background-color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.history-section::before {
+  display: none;
+}
+
+.history-section .container {
+  position: relative;
+  z-index: 1;
+}
+
 .about-section {
   padding: var(--space-20) 0;
   background-color: var(--color-white);
