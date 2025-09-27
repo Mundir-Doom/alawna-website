@@ -4,6 +4,7 @@ Django settings for alawna_website project.
 
 from pathlib import Path
 import os
+import sys
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,8 +20,17 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-in-produc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
+# When running the local development server, always enable DEBUG so static files work without extra flags
+if 'runserver' in sys.argv and not DEBUG:
+    DEBUG = True
+
 # Updated to read from environment variables
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,testserver').split(',')
+_raw_allowed_hosts = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,testserver').split(',')
+ALLOWED_HOSTS = [host.strip() for host in _raw_allowed_hosts if host.strip()]
+
+# Always allow local development hosts so "Bad Request (400)" doesn't occur
+DEFAULT_LOCAL_HOSTS = {'localhost', '127.0.0.1', '0.0.0.0', 'testserver'}
+ALLOWED_HOSTS = list({*ALLOWED_HOSTS, *DEFAULT_LOCAL_HOSTS})
 
 
 # Application definition
