@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}تسجيل الدخول - اتحاد قبائل العلاونة{% endblock %}
+
+{% block content %}
+<section class="auth-hero">
+    <div class="auth-container">
+        <div class="auth-card auth-card--info">
+            <div class="auth-logo">
+                <img src="{% static 'assets/5bb495a6c0913a1fd0082c21b631846738790a28.png' %}" alt="شعار اتحاد قبائل العلاونة">
+            </div>
+            <span class="auth-badge">منصة اتحاد قبائل العلاونة</span>
+            <h1 class="auth-heading">مرحباً بعودتك</h1>
+            <p class="auth-description">سجّل دخولك لمتابعة آخر الأخبار، وإدارة المحتوى، والتواصل مع أعضاء مجتمع العلاونة الرقمي.</p>
+            <ul class="auth-highlights">
+                <li>تجربة عربية متكاملة بواجهة حديثة</li>
+                <li>لوحة تحكم سهلة لإدارة المقالات والأخبار</li>
+                <li>محتوى يُحافظ على الهوية والتراث</li>
+            </ul>
+        </div>
+
+        <div class="auth-card auth-card--form">
+            <div class="auth-form-header">
+                <h2>تسجيل الدخول</h2>
+                <p>أدخل بياناتك للمتابعة</p>
+            </div>
+
+            <form method="post" class="auth-form" novalidate>
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+
+                {% if form.non_field_errors %}
+                <div class="auth-alert">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">اسم المستخدم</label>
+                    <input
+                        id="{{ form.username.id_for_label }}"
+                        type="text"
+                        name="{{ form.username.html_name }}"
+                        value="{{ form.username.value|default:'' }}"
+                        class="auth-input"
+                        placeholder="اكتب اسم المستخدم"
+                        autocomplete="username"
+                        required
+                    >
+                    {% if form.username.errors %}
+                    <div class="auth-error">
+                        {% for error in form.username.errors %}{{ error }}{% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password.id_for_label }}">كلمة المرور</label>
+                    <input
+                        id="{{ form.password.id_for_label }}"
+                        type="password"
+                        name="{{ form.password.html_name }}"
+                        class="auth-input"
+                        placeholder="أدخل كلمة المرور"
+                        autocomplete="current-password"
+                        required
+                    >
+                    {% if form.password.errors %}
+                    <div class="auth-error">
+                        {% for error in form.password.errors %}{{ error }}{% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="primary-button primary-button--full">تسجيل الدخول</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>لا تمتلك حساباً بعد؟ <a href="{% url 'accounts:signup' %}">إنشاء حساب جديد</a></p>
+                <a href="{% url 'articles:home' %}" class="auth-back">العودة إلى الصفحة الرئيسية</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

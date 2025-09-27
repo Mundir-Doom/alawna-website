@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}الأخبار والمقالات - اتحاد قبائل العلاونة{% endblock %}
+
+{% block content %}
+<section class="news-hero">
+    <div class="container">
+        <span class="news-badge">الأخبار</span>
+        <h1 class="news-title">آخر أخبار اتحاد قبائل العلاونة</h1>
+        <p class="news-description">متابعة لنبض القبيلة من مبادرات وإنجازات وفعاليات معاصرة تلهم أبناءها في كل مكان.</p>
+
+        <form method="get" class="news-search" novalidate>
+            <input type="text" name="search" value="{{ search_query }}" placeholder="ابحث عن مقال، مبادرة، أو اسم كاتب" autocomplete="off">
+            <button type="submit" class="news-search-button" aria-label="بحث">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+                </svg>
+            </button>
+        </form>
+
+        {% if categories %}
+        <div class="news-categories">
+            <a href="{% url 'articles:article_list' %}" class="news-chip {% if not active_category %}news-chip--active{% endif %}">جميع الموضوعات</a>
+            {% for category in categories %}
+            <a href="{% url 'articles:article_list_by_category' category.slug %}" class="news-chip {% if active_category and active_category.slug == category.slug %}news-chip--active{% endif %}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="news-list">
+    <div class="container">
+        {% if articles %}
+        <div class="blog-grid">
+            {% for article in articles %}
+            <article class="blog-post {% if article.thumbnail %}blog-post--with-thumbnail{% endif %}">
+                {% if article.thumbnail %}
+                <div class="post-thumbnail">
+                    <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="post-content">
+                    <div class="post-top">
+                        <span class="post-tag">{{ article.category.name }}</span>
+                        {% if article.featured %}
+                        <span class="post-tag post-tag--featured">مميز</span>
+                        {% endif %}
+                    </div>
+                    <h3 class="post-title">{{ article.title }}</h3>
+                    <p class="post-excerpt">{{ article.excerpt }}</p>
+                    <div class="post-meta">
+                        <span class="post-date">{{ article.published_at|date:"d F Y" }}</span>
+                        <span class="post-author">{{ article.author.get_full_name|default:article.author.username }}</span>
+                    </div>
+                    <a href="{{ article.get_absolute_url }}" class="post-link">اقرأ المزيد</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        {% if is_paginated %}
+        <div class="news-pagination">
+            <div class="pagination-info">صفحة {{ page_obj.number }} من {{ page_obj.paginator.num_pages }}</div>
+            <div class="pagination-buttons">
+                {% if page_obj.has_previous %}
+                <a class="pagination-button pagination-button--prev" href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>السابق</span>
+                </a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <a class="pagination-button pagination-button--next" href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">
+                    <span>التالي</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <div class="news-empty">
+            <h3>لا توجد مقالات منشورة بعد</h3>
+            <p>حاول تحديث البحث أو العودة لاحقاً لمتابعة جديد الاتحاد.</p>
+            {% if user.is_staff %}
+            <a href="{% url 'articles:article_create' %}" class="primary-button">إضافة أول مقال</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% if featured_articles %}
+<section class="news-featured">
+    <div class="container">
+        <div class="news-featured-header">
+            <div>
+                <h2>مقالات مميزة</h2>
+                <p>اختيارات فريق التحرير من القصص الملهمة والرؤى الإستراتيجية</p>
+            </div>
+        </div>
+        <div class="news-featured-grid">
+            {% for article in featured_articles %}
+            <article class="news-featured-card">
+                {% if article.thumbnail %}
+                <div class="featured-thumb">
+                    <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="featured-content">
+                    <span class="featured-category">{{ article.category.name }}</span>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.excerpt|truncatechars:140 }}</p>
+                    <div class="featured-meta">
+                        <span>{{ article.published_at|date:"d F Y" }}</span>
+                        <span>{{ article.author.get_full_name|default:article.author.username }}</span>
+                    </div>
+                    <a href="{{ article.get_absolute_url }}" class="post-link">اقرأ المزيد</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

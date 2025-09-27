@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}حذف المقال - اتحاد قبائل العلاونة{% endblock %}
+
+{% block content %}
+<section class="delete-confirmation-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="delete-card">
+                    <div class="delete-header">
+                        <div class="delete-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h2 class="delete-title">تأكيد الحذف</h2>
+                        <p class="delete-subtitle">هل أنت متأكد من رغبتك في حذف هذا المقال؟</p>
+                    </div>
+
+                    <div class="article-preview">
+                        {% if object.thumbnail %}
+                        <div class="preview-thumbnail">
+                            <img src="{{ object.thumbnail.url }}" alt="{{ object.title }}" class="img-fluid rounded">
+                        </div>
+                        {% endif %}
+                        
+                        <div class="preview-content">
+                            <h4 class="preview-title">{{ object.title }}</h4>
+                            <p class="preview-excerpt">{{ object.excerpt|truncatechars:150 }}</p>
+                            <div class="preview-meta">
+                                <span class="badge bg-secondary">{{ object.category.name }}</span>
+                                <small class="text-muted">{{ object.created_at|date:"d F Y" }}</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warning-message">
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <strong>تحذير:</strong> هذا الإجراء لا يمكن التراجع عنه. سيتم حذف المقال نهائياً من قاعدة البيانات.
+                        </div>
+                    </div>
+
+                    <form method="post" class="delete-form">
+                        {% csrf_token %}
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                <i class="fas fa-trash"></i> حذف المقال نهائياً
+                            </button>
+                            <a href="{% url 'articles:article_detail' object.slug %}" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-times"></i> إلغاء
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/articles/delete.css' %}">
+{% endblock %}

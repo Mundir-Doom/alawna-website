@@ -1,0 +1,27 @@
+.featured-articles-section .blog-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .featured-articles-section .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .featured-articles-section .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.featured-articles-section .blog-post--featured {
+    grid-column: auto;
+    grid-row: auto;
+}
+
+.blog-cta__form {
+    display: inline-block;
+    margin: 0;
+}

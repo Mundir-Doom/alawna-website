@@ -21,7 +21,7 @@ const carouselData = [
 
 // Navigation functionality
 function initNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-link-mobile, .nav-dropdown-link');
     const sections = document.querySelectorAll('section[id]');
     
     // Handle navigation clicks
@@ -29,15 +29,20 @@ function initNavigation() {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetSection = link.getAttribute('data-section');
-            scrollToSection(targetSection);
-            
-            // Update active states
-            updateActiveNavLinks(targetSection);
-            
-            // Close mobile menu if open
-            closeMobileMenu();
+            if (targetSection) {
+                scrollToSection(targetSection);
+                
+                // Update active states
+                updateActiveNavLinks(targetSection);
+                
+                // Close mobile menu if open
+                closeMobileMenu();
+            }
         });
     });
+    
+    // Initialize dropdown functionality
+    initDropdownMenu();
     
     // Intersection Observer for active section detection
     const observerOptions = {
@@ -88,11 +93,61 @@ function scrollToSection(sectionId) {
 
 // Update active navigation links
 function updateActiveNavLinks(activeSection) {
-    const allNavLinks = document.querySelectorAll('.nav-link, .nav-link-mobile');
+    const allNavLinks = document.querySelectorAll('.nav-link, .nav-link-mobile, .nav-dropdown-link');
     allNavLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('data-section') === activeSection) {
             link.classList.add('active');
+        }
+    });
+}
+
+// Dropdown menu functionality
+function initDropdownMenu() {
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        const menu = dropdown.querySelector('.nav-dropdown-menu');
+        
+        // Toggle dropdown on click
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Close other dropdowns
+            dropdowns.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove('open');
+                }
+            });
+            
+            // Toggle current dropdown
+            dropdown.classList.toggle('open');
+        });
+        
+        // Handle dropdown link clicks
+        const dropdownLinks = dropdown.querySelectorAll('.nav-dropdown-link');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = link.getAttribute('data-section');
+                if (targetSection) {
+                    scrollToSection(targetSection);
+                    updateActiveNavLinks(targetSection);
+                    dropdown.classList.remove('open');
+                    closeMobileMenu();
+                }
+            });
+        });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-dropdown')) {
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('open');
+            });
         }
     });
 }

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ article.title }} - اتحاد قبائل العلاونة{% endblock %}
+
+{% block content %}
+<section class="article-detail-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Article Content -->
+                <article class="article-content">
+                    <!-- Article Header -->
+                    <header class="article-header">
+                        {% if article.thumbnail %}
+                        <div class="article-thumbnail mb-4">
+                            <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}" class="img-fluid rounded">
+                        </div>
+                        {% endif %}
+                        
+                        <div class="article-meta mb-3">
+                            <span class="badge bg-primary me-2">{{ article.category.name }}</span>
+                            {% if article.featured %}
+                            <span class="badge bg-warning me-2">مميز</span>
+                            {% endif %}
+                        </div>
+                        
+                        <h1 class="article-title">{{ article.title }}</h1>
+                        
+                        <div class="article-info">
+                            <div class="article-author">
+                                <strong>المؤلف:</strong> {{ article.author.get_full_name|default:article.author.username }}
+                            </div>
+                            <div class="article-date">
+                                <strong>تاريخ النشر:</strong> {{ article.published_at|date:"d F Y" }}
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Article Body -->
+                    <div class="article-body">
+                        {{ article.content|linebreaks }}
+                    </div>
+
+                    <!-- Article Actions -->
+                    <div class="article-actions mt-4 pt-4 border-top">
+                        {% if user.is_staff %}
+                        <a href="{% url 'articles:article_update' article.slug %}" class="btn btn-outline-primary">تعديل</a>
+                        <a href="{% url 'articles:article_delete' article.slug %}" class="btn btn-outline-danger">حذف</a>
+                        {% endif %}
+                    </div>
+                </article>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <!-- Related Articles -->
+                    {% if related_articles %}
+                    <div class="sidebar-widget">
+                        <h4 class="widget-title">مقالات ذات صلة</h4>
+                        <div class="related-articles">
+                            {% for related in related_articles %}
+                            <div class="related-article mb-3">
+                                {% if related.thumbnail %}
+                                <img src="{{ related.thumbnail.url }}" alt="{{ related.title }}" class="related-thumb">
+                                {% endif %}
+                                <div class="related-content">
+                                    <h5 class="related-title">
+                                        <a href="{{ related.get_absolute_url }}">{{ related.title }}</a>
+                                    </h5>
+                                    <p class="related-excerpt">{{ related.excerpt|truncatechars:80 }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Category Articles -->
+                    <div class="sidebar-widget">
+                        <h4 class="widget-title">مقالات أخرى في {{ article.category.name }}</h4>
+                        <div class="category-articles">
+                            {% for cat_article in article.category.article_set.all|slice:":5" %}
+                                {% if cat_article.id != article.id and cat_article.status == 'published' %}
+                                <div class="category-article">
+                                    <a href="{{ cat_article.get_absolute_url }}" class="category-article-link">
+                                        {{ cat_article.title }}
+                                    </a>
+                                    <small class="text-muted d-block">{{ cat_article.published_at|date:"d/m/Y" }}</small>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/articles/detail.css' %}">
+{% endblock %}

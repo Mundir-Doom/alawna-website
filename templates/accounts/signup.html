@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}إنشاء حساب جديد - اتحاد قبائل العلاونة{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <div class="auth-logo">
+                            <img src="{% static 'assets/5bb495a6c0913a1fd0082c21b631846738790a28.png' %}" alt="شعار اتحاد قبائل العلاونة" class="logo-img">
+                        </div>
+                        <h2 class="auth-title">إنشاء حساب جديد</h2>
+                        <p class="auth-subtitle">انضم إلى مجتمع اتحاد قبائل العلاونة</p>
+                    </div>
+
+                    <form method="post" class="auth-form">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}" class="form-label">
+                                <i class="fas fa-user"></i> اسم المستخدم
+                            </label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.username.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label">
+                                <i class="fas fa-lock"></i> كلمة المرور
+                            </label>
+                            {{ form.password1 }}
+                            {% if form.password1.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.password1.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label">
+                                <i class="fas fa-lock"></i> تأكيد كلمة المرور
+                            </label>
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.password2.errors %}{{ error }}{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-user-plus"></i> إنشاء الحساب
+                            </button>
+                        </div>
+
+                        <div class="auth-footer">
+                            <p class="text-center">
+                                لديك حساب بالفعل؟ 
+                                <a href="{% url 'accounts:login' %}" class="auth-link">تسجيل الدخول</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/accounts/signup.css' %}">
+{% endblock %}

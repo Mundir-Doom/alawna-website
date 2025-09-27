@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}الرئيسية - اتحاد قبائل العلاونة{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <!-- Background Carousel -->
+    <div class="hero-carousel">
+        <div class="carousel-slide active">
+            <img src="{% static 'assets/15dbdea78f1a387b40a052a05482561164a74998.png' %}" alt="المحاربون التاريخيون" class="carousel-img">
+        </div>
+        <div class="carousel-slide">
+            <img src="{% static 'assets/89403807d08d0e29922c3acde4e0ed7549d067b4.png' %}" alt="فرسان الصحراء" class="carousel-img">
+        </div>
+        <div class="carousel-slide">
+            <img src="{% static 'assets/26885bccde81de2081318548df1662088a02c5cb.png' %}" alt="الفرسان المعاصرون" class="carousel-img">
+        </div>
+        
+        <!-- Overlays -->
+        <div class="hero-overlay"></div>
+        <div class="hero-gradient"></div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control carousel-prev" id="prev-btn">
+        <svg class="carousel-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+    </button>
+    <button class="carousel-control carousel-next" id="next-btn">
+        <svg class="carousel-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </button>
+
+    <!-- Slide Indicators -->
+    <div class="carousel-indicators">
+        <button class="indicator active" data-slide="0"></button>
+        <button class="indicator" data-slide="1"></button>
+        <button class="indicator" data-slide="2"></button>
+    </div>
+
+    <!-- Image Caption -->
+    <div class="carousel-caption">
+        <p id="carousel-caption-text">تراث عريق من الشجاعة والفروسية</p>
+    </div>
+
+    <!-- Main Hero Content -->
+    <div class="hero-content">
+        <div class="hero-text">
+            <!-- Badge -->
+            <div class="hero-badge">#اتحاد_قبائل_العلاونة</div>
+
+            <!-- Main Title -->
+            <h1 class="hero-title">اتحاد قبائل العلاونة</h1>
+
+            <!-- Subtitle -->
+            <p class="hero-subtitle">هویةٌ راسخة، حاضرٌ یزدهر، ومستقبلٌ رقميٌ واعد</p>
+
+            <!-- CTA Button -->
+            <button class="hero-cta" onclick="scrollToSection('contact')">انضم إلینا</button>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-text">انتقل للأسفل</div>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- Home Section -->
+<section class="home-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-kicker">من نحن</div>
+            <h2 class="section-title">قبيلة العلاونة</h2>
+            <p class="section-desc">تنسب إلى علي المُلقّب بـ(علوان) بن سالم بن هيب بن رافع بن دباب من بني سليم، ويرى كثيرون أن العلاونة من أشراف العرب من آل البيت عليهم السلام من سلالة الحسن بن علي بن أبي طالب رضي الله عنهما.</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="content-card card--featured">
+                <div class="card-tag card-tag--primary">الرسالة</div>
+                <h3 class="card-title">رسالتنا</h3>
+                <p class="card-body">نُعرّف بالهوية الجامعة لقبيلة العلاونة، ونُركِّز على الحاضر والمستقبل عبر التحول الرقمي، واستثمار الإنسان والأرض والمعرفة.</p>
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">الرؤية</div>
+                <h3 class="card-title">رؤيتنا</h3>
+                <p class="card-body">بناء منصة رقمية متطورة تجمع أبناء القبيلة حول هوية واحدة، وتُسهم في تطوير المجتمع من خلال العلم والتكنولوجيا والقيم الأصيلة.</p>
+            </div>
+        </div>
+
+        <div class="quote">
+            <div class="quote-decoration">
+                <div class="quote-mark quote-mark-left">"</div>
+                <div class="quote-mark quote-mark-right">"</div>
+            </div>
+            <p class="quote-text">رحم الله أسلافنا، وفتح طريق أبناءنا</p>
+            <div class="quote-underline"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Include the rest of your original HTML content -->
+{% include 'articles/sections/about.html' %}
+{% include 'articles/sections/present.html' %}
+{% include 'articles/sections/spread.html' %}
+{% include 'articles/sections/figures.html' %}
+{% include 'articles/sections/resources.html' %}
+{% include 'articles/sections/contact.html' %}
+
+<!-- Featured Articles Section -->
+{% if featured_articles %}
+<section class="featured-articles-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">آخر الأخبار المميزة</h2>
+            <p class="section-desc">أهم المقالات والأخبار المتعلقة بقبيلة العلاونة</p>
+        </div>
+
+        <div class="blog-grid">
+            {% for article in featured_articles %}
+            <article class="blog-post blog-post--featured {% if article.thumbnail %}blog-post--with-thumbnail{% endif %}">
+                {% if article.thumbnail %}
+                <div class="post-thumbnail">
+                    <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}" loading="lazy">
+                </div>
+                {% endif %}
+                <div class="post-content">
+                    <div class="post-tag">مميز</div>
+                    <h3 class="post-title">{{ article.title }}</h3>
+                    <p class="post-excerpt">{{ article.excerpt }}</p>
+                    <div class="post-meta">
+                        <span class="post-date">{{ article.published_at|date:"d F Y" }}</span>
+                        <span class="post-author">{{ article.author.get_full_name|default:article.author.username }}</span>
+                    </div>
+                    <a href="{{ article.get_absolute_url }}" class="post-link">اقرأ المزيد</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="blog-cta">
+            <h3 class="section-subtitle">المزيد من الأخبار</h3>
+            <p>ابق على اطلاع بآخر أخبار ومستجدات قبيلة العلاونة</p>
+            <form class="blog-cta__form" method="get" action="{% url 'articles:article_list' %}">
+                <button type="submit" class="primary-button">عرض جميع الأخبار</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/articles/home.css' %}">
+{% endblock %}

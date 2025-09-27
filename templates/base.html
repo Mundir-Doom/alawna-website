@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}اتحاد قبائل العلاونة{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/shared/admin.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body data-home-url="{% url 'articles:home' %}">
+    {% if user.is_authenticated and user.is_staff %}
+    <!-- Admin Navigation -->
+    <div class="admin-nav">
+        <div class="container">
+            <div class="admin-toolbar">
+                <div class="admin-actions">
+                    <span class="admin-label">مساحة إدارة المحتوى</span>
+                    <a href="{% url 'articles:article_create' %}" class="admin-link">إضافة مقال</a>
+                    <a href="{% url 'articles:article_list' %}" class="admin-link">جميع المقالات</a>
+                </div>
+                <div class="admin-session">
+                    <span>مرحباً {{ user.username }}</span>
+                    <a href="{% url 'accounts:logout' %}" class="admin-link">تسجيل الخروج</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <img src="{% static 'assets/5bb495a6c0913a1fd0082c21b631846738790a28.png' %}" alt="شعار اتحاد قبائل العلاونة" class="logo-img">
+                    <div class="logo-text">اتحاد قبائل العلاونة</div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
+                    <button class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" onclick="location.href='{% url 'articles:home' %}'">الرئيسية</button>
+                    <div class="nav-dropdown">
+                        <button class="nav-link nav-dropdown-toggle">عن القبيلة</button>
+                        <div class="nav-dropdown-menu">
+                            <button class="nav-dropdown-link" data-section="about">التعريف</button>
+                            <button class="nav-dropdown-link" data-section="present">الحاضر والمستقبل</button>
+                            <button class="nav-dropdown-link" data-section="spread">الانتشار والمناطق</button>
+                            <button class="nav-dropdown-link" data-section="figures">الرموز والمجاهدون</button>
+                        </div>
+                    </div>
+                    <button class="nav-link {% if 'article' in request.resolver_match.url_name %}active{% endif %}" onclick="location.href='{% url 'articles:article_list' %}'">الأخبار</button>
+                    <button class="nav-link" data-section="resources">المراجع</button>
+                    <button class="nav-link" data-section="contact">تواصل</button>
+                    {% if not user.is_authenticated %}
+                    <button class="nav-link nav-login" onclick="location.href='{% url 'accounts:login' %}'">تسجيل الدخول</button>
+                    {% else %}
+                    <button class="nav-link nav-profile" onclick="location.href='{% url 'accounts:profile' %}'">ملفي الشخصي</button>
+                    {% endif %}
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="nav-mobile" id="mobile-nav">
+                <button class="nav-link-mobile" onclick="location.href='{% url 'articles:home' %}'">الرئيسية</button>
+                <button class="nav-link-mobile" data-section="about">التعريف</button>
+                <button class="nav-link-mobile" data-section="present">الحاضر والمستقبل</button>
+                <button class="nav-link-mobile" data-section="spread">الانتشار والمناطق</button>
+                <button class="nav-link-mobile" data-section="figures">الرموز والمجاهدون</button>
+                <button class="nav-link-mobile" onclick="location.href='{% url 'articles:article_list' %}'">الأخبار</button>
+                <button class="nav-link-mobile" data-section="resources">المراجع</button>
+                <button class="nav-link-mobile" data-section="contact">تواصل</button>
+                {% if not user.is_authenticated %}
+                <button class="nav-link-mobile" onclick="location.href='{% url 'accounts:login' %}'">تسجيل الدخول</button>
+                {% else %}
+                <button class="nav-link-mobile" onclick="location.href='{% url 'accounts:profile' %}'">ملفي الشخصي</button>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="{% static 'assets/logo.svg' %}" alt="شعار اتحاد قبائل العلاونة" class="footer-logo-img">
+                    </div>
+                    <p class="footer-slogan">رحم الله أسلافنا، وفتح طريق أبناءنا</p>
+                    <div class="footer-hashtag">#اتحاد_قبائل_العلاونة</div>
+                </div>
+
+                <!-- Links Section -->
+                <div class="footer-links">
+                    <h4 class="footer-heading">روابط مهمة</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="/privacy" class="footer-link">سياسة الخصوصية</a></li>
+                        <li><a href="/terms" class="footer-link">شروط الاستخدام</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'accounts:profile' %}" class="footer-link">ملفي الشخصي</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="footer-contact">
+                    <h4 class="footer-heading">التواصل</h4>
+                    <div class="footer-contact-info">
+                        <p>للتواصل والمشاركة</p>
+                        <p>نرحب بمساهماتكم وأفكاركم</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-separator"></div>
+
+            <div class="footer-bottom">
+                <p>© اتحاد قبائل العلاونة 2025</p>
+                <p>تم التطوير بعناية لخدمة تراث القبيلة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'animations.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

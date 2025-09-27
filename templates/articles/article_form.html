@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{% if form.instance.pk %}تعديل المقال{% else %}إضافة مقال جديد{% endif %} - اتحاد قبائل العلاونة
+{% endblock %}
+
+{% block content %}
+<section class="editor-hero">
+    <div class="container">
+        <span class="editor-badge">استوديو المحتوى</span>
+        <h1 class="editor-title">
+            {% if form.instance.pk %}تعديل المقال{% else %}مقال جديد{% endif %}
+        </h1>
+        <p class="editor-description">
+            {% if form.instance.pk %}
+            حدّث تفاصيل المقال ليبقى السرد الرقمي نابضاً ومتوافقاً مع صوت الاتحاد.
+            {% else %}
+            أنشئ قصة جديدة تبرز تراث الاتحاد ومبادراته ورؤيته للمستقبل الرقمي.
+            {% endif %}
+        </p>
+    </div>
+</section>
+
+<section class="editor-body">
+    <div class="container">
+        <div class="editor-shell">
+            <div class="editor-card">
+                <div class="editor-card__header">
+                    <h2 class="editor-card__title">
+                        {% if form.instance.pk %}
+                        <span class="editor-icon">✎</span>
+                        تفاصيل المقال
+                        {% else %}
+                        <span class="editor-icon">＋</span>
+                        ابدأ بالإنشاء
+                        {% endif %}
+                    </h2>
+                    {% if form.errors %}
+                    <div class="editor-alert">
+                        يرجى مراجعة الحقول المظللة وتصحيح الملاحظات قبل الحفظ.
+                    </div>
+                    {% endif %}
+                </div>
+
+                <form method="post" enctype="multipart/form-data" class="editor-form">
+                    {% csrf_token %}
+
+                    <div class="editor-grid">
+                        <div class="editor-field">
+                            {{ form.title|as_crispy_field }}
+                        </div>
+                        <div class="editor-field">
+                            {{ form.excerpt|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="editor-grid editor-grid--two">
+                        <div class="editor-field">
+                            {{ form.category|as_crispy_field }}
+                        </div>
+                        <div class="editor-field">
+                            {{ form.thumbnail|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="editor-field editor-field--full">
+                        {{ form.content|as_crispy_field }}
+                    </div>
+
+                    <div class="editor-grid editor-grid--two">
+                        <div class="editor-field">
+                            {{ form.status|as_crispy_field }}
+                        </div>
+                        <div class="editor-field editor-field--compact">
+                            {{ form.featured|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="editor-actions">
+                        <button type="submit" class="primary-button editor-actions__primary">
+                            {% if form.instance.pk %}حفظ التعديلات{% else %}نشر المقال{% endif %}
+                        </button>
+                        <a href="{% url 'articles:article_list' %}" class="secondary-button">
+                            إلغاء والعودة
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
